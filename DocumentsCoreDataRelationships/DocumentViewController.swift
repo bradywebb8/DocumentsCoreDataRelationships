@@ -36,15 +36,20 @@ class DocumentViewController: UIViewController {
         let documentName = name.trimmingCharacters(in: .whitespaces)
         let content = contentTextView.text
         if document == nil {
-            if let category = category {
+            if
+                let category = category {
                 document = Document(name: documentName, content: content, category: category)
             }
-        } else {
-            if let category = category {
+        }
+        else
+        {
+            if
+                let category = category {
                 document?.update(name: documentName, content: content, category: category)
             }
         }
-        if let document = document {
+        if
+            let document = document {
             do {
                 let managedContext = document.managedObjectContext
                 try managedContext?.save()

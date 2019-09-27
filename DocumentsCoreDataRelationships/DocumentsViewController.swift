@@ -15,11 +15,11 @@ class DocumentsViewController: UIViewController, UITableViewDelegate, UITableVie
     var category: Category?
     var documents = [Document]()
     let dateFormatter = DateFormatter()
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        title = category?.name ?? ""
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .medium
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            title = category?.name ?? ""
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .medium
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,26 +54,9 @@ class DocumentsViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return documents.count
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "documentCell", for: indexPath)
-        
-        if let cell = cell as? DocumentTableViewCell {
-            let document = documents[indexPath.row]
-            cell.nameLabel.text = document.name
-            cell.sizeLabel.text = String(document.size)
-            if let modifiedDate = document.modifiedDate {
-                cell.modifiedDateLabel.text = dateFormatter.string(from: modifiedDate)
-            } else {
-                cell.modifiedDateLabel.text = "unknown"
-            }
-        }
-        return cell
-    }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") {
-            action, index in
-            self.deleteDocument(at: indexPath)
-        }
+            let delete = UITableViewRowAction(style: .destructive, title: "Delete") {action, index in self.deleteDocument(at: indexPath)
+                }
         
         return [delete]
     }

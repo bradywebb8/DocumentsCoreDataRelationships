@@ -9,7 +9,8 @@
 import UIKit
 
 class DocumentTableViewCell: UITableViewCell {
-    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var nameLabel:UILabel!
     @IBOutlet weak var sizeLabel: UILabel!
     @IBOutlet weak var modifiedDateLabel: UILabel!
     

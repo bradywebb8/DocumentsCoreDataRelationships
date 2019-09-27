@@ -20,7 +20,6 @@ public class Document: NSManagedObject {
             rawModifiedDate = newValue as NSDate?
         }
     }
-    
     convenience init?(name: String?, content: String?, category: Category) {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate  //UIKit is needed to access UIApplication
         guard let managedContext = appDelegate?.persistentContainer.viewContext,
